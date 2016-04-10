@@ -16,6 +16,12 @@ Run the npm script
 npm start
 ```
 
+## Bundling React App
+
+```sh
+gulp bundle
+```
+
 Now, your express app is listening on port 8981.
 
 ## License
