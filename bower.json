@@ -1,0 +1,27 @@
+{
+  "name": "react-express-base",
+  "description": "Express and React base app",
+  "main": "server.js",
+  "authors": [
+    "Alwin Arrasyid <alwin.ridd@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "express",
+    "app"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.0.1"
+  }
+}
