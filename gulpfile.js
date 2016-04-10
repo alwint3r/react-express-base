@@ -5,43 +5,40 @@ const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const nodemon = require('gulp-nodemon');
-
-const reactSrc = [
-    'bower_components/react/react.js',
-    'bower_components/react/react-dom.js',
-];
+const webpack = require('gulp-webpack');
+const sourcemaps = require('gulp-sourcemaps');
 
 const jsxSrc = [
     'components/*.jsx',
     'components/**/*.jsx',
 ];
 
-gulp.task('concat-react', () => {
-    gulp.src(reactSrc)
-        .pipe(concat('react-bundle.js'))
-        .pipe(gulp.dest('build/'));
-});
-
-gulp.task('jsx', () => {
+gulp.task('bundle', () => {
     gulp.src(jsxSrc)
-        .pipe(babel({
-            only: jsxSrc,
-            compact: false,
-            presets: ['es2015', 'react'],
-        }))
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest('build/'));
-});
+        .pipe(sourcemaps.init())
+            .pipe(webpack({
+                module: {
+                    loaders: [
+                        {
+                            test: /\.jsx?$/,
+                            exclude: /node_modules|bower_components/,
+                            loader: 'babel',
 
-gulp.task('bundle', ['concat-react', 'jsx'], () => {
-    gulp.src(['build/*.js'])
-        .pipe(concat('bundle.js'))
-        .pipe(uglify())
+                            query: {
+                                presets: ['es2015', 'react'],
+                            },
+                        },
+                    ],
+                },
+            }))
+            .pipe(concat('bundle.js'))
+            .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('build/'));
 });
 
 gulp.task('watch', () => {
-    gulp.watch(jsxSrc, ['jsx']);
+    gulp.watch(jsxSrc, ['bundle']);
 });
 
 gulp.task('start-server', () => {
@@ -54,4 +51,4 @@ gulp.task('start-server', () => {
     });
 });
 
-gulp.task('default', ['jsx', 'concat-react', 'watch', 'start-server']);
+gulp.task('default', ['bundle', 'watch', 'start-server']);

@@ -1,3 +1,5 @@
+import React from 'react';
+
 const DisplayText = React.createClass({
     render() {
         return (
@@ -5,3 +7,5 @@ const DisplayText = React.createClass({
         );
     },
 });
+
+export default DisplayText;

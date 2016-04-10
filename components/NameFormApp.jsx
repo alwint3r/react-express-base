@@ -1,4 +1,7 @@
-'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import NameForm from './NameForm.jsx';
+import DisplayText from './DisplayText.jsx';
 
 const NameFormApp = React.createClass({
     getInitialState() {
@@ -18,3 +21,5 @@ const NameFormApp = React.createClass({
         );
     },
 });
+
+ReactDOM.render(<NameFormApp />, document.getElementById('app-container'));
