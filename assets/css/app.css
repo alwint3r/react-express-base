@@ -3,7 +3,7 @@ body {
     padding: 0;
 }
 
-#app-container {
-    width: 98%;
-    margin: 30px;
+.app-container {
+    margin: 15px;
+    box-sizing: border-box;
 }

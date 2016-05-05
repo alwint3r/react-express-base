@@ -9,8 +9,8 @@ const webpack = require('gulp-webpack');
 const sourcemaps = require('gulp-sourcemaps');
 
 const jsxSrc = [
-    'components/*.jsx',
-    'components/**/*.jsx',
+    'assets/js/*.js',
+    'assets/js/**/*.js',
 ];
 
 gulp.task('bundle', () => {
@@ -20,7 +20,7 @@ gulp.task('bundle', () => {
                 module: {
                     loaders: [
                         {
-                            test: /\.jsx?$/,
+                            test: /\.js?$/,
                             exclude: /node_modules|bower_components/,
                             loader: 'babel',
 
@@ -34,7 +34,7 @@ gulp.task('bundle', () => {
             .pipe(concat('bundle.js'))
             .pipe(uglify())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest('build/js/'));
 });
 
 gulp.task('watch', () => {
@@ -46,7 +46,7 @@ gulp.task('start-server', () => {
         script: 'server.js',
         ext: 'js',
         env: {
-            APPENV: 'development',
+            NODE_ENV: 'development',
         },
     });
 });

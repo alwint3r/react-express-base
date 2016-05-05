@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 
 const DisplayText = React.createClass({
