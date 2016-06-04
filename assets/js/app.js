@@ -2,9 +2,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NameFormApp from './components/NameFormApp';
+import ProductCatalog from './components/ProductCatalogApp';
 
 ReactDOM.render(
-    <NameFormApp />,
-    document.getElementById('nameform-app-container')
+    <ProductCatalog />,
+    document.getElementById('product-catalog-app')
 );
