@@ -7,13 +7,9 @@ export default function(defaultState) {
         if (action.type === 'GET_PRODUCTS') {
             return fetch('/products')
                 .then(response => {
-                    console.log('Got response: ', response);
-
                     return response.json();
                 })
                 .then(products => {
-                    console.log('Products: ', products);
-
                     return {
                         products: products.data,
                     };
