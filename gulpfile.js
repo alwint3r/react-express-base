@@ -41,14 +41,4 @@ gulp.task('watch', () => {
     gulp.watch(jsxSrc, ['bundle']);
 });
 
-gulp.task('start-server', () => {
-    nodemon({
-        script: 'server.js',
-        ext: 'js',
-        env: {
-            NODE_ENV: 'development',
-        },
-    });
-});
-
-gulp.task('default', ['bundle', 'watch', 'start-server']);
+gulp.task('default', ['bundle', 'watch']);
