@@ -6,4 +6,11 @@ export default {
             type: 'GET_PRODUCTS',
         };
     },
+
+    searchProduct(keyword) {
+        return {
+            type: 'SEARCH_PRODUCTS',
+            param: keyword,
+        };
+    },
 };

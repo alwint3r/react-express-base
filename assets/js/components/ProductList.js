@@ -3,6 +3,12 @@ import Product from './Product';
 
 const ProductList = React.createClass({
     render() {
+        const style = {
+            marginTop: '30px',
+            overflow: 'hidden',
+            clear: 'both',
+        };
+
         const products = this.props.data.products.map(prod => {
             return (<Product key={prod.id}
                 title={prod.title}
@@ -10,7 +16,7 @@ const ProductList = React.createClass({
                 description={prod.description} />)
         });
 
-        return (<div className="product-list">{products}</div>);
+        return (<div className="product-list" style={style}>{products}</div>);
     }
 });
 

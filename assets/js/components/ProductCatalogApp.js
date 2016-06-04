@@ -17,7 +17,13 @@ const ProductCatalog = React.createClass({
     },
 
     onSearchKeyup(event) {
-        console.log('Searching: ' + event.target.value);
+        const value = event.target.value;
+
+        if (!value) {
+            return productStore.dispatch(Action.getProducts());
+        }
+
+        return productStore.dispatch(Action.searchProduct(value));
     },
 
     componentDidMount() {
