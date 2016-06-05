@@ -2,6 +2,10 @@ import React from 'react';
 import Product from './Product';
 
 const ProductList = React.createClass({
+    propTypes: {
+        data: React.PropTypes.array.isRequired,
+    },
+
     render() {
         const style = {
             marginTop: '30px',

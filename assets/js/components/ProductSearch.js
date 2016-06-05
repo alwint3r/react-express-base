@@ -1,6 +1,10 @@
 import React from 'react';
 
 const SearchForm = React.createClass({
+    propTypes: {
+        onSearch: React.PropTypes.func.isRequired,
+    },
+
     render() {
         const inputStyle = {
             margin: '20px 0px',
