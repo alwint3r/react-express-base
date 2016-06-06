@@ -1,6 +1,6 @@
 {
   "name": "react-express-base",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Express and React base app",
   "main": "server.js",
   "private": true,
