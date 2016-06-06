@@ -1,6 +1,12 @@
 Project History
 ===============
 
+## 0.3.0 - 2016-06-06
+
+### Modified
+
+* Using Provider and connect bindings from react-redux module.
+
 ## 0.2.0 - 2016-06-04
 
 ### Modified
