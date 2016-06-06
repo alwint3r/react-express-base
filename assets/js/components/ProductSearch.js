@@ -1,8 +1,17 @@
-import React from 'react';
+import React from 'react'
+import { connect } from 'react-redux'
+import Action from '../actions/ProductAction'
 
 const SearchForm = React.createClass({
-    propTypes: {
-        onSearch: React.PropTypes.func.isRequired,
+    onSearch(event) {
+        const { dispatch } = this.props;
+        const { value } = event.target;
+
+        if (!value) {
+            return dispatch(Action.getProducts());
+        }
+
+        return dispatch(Action.searchProduct(value));
     },
 
     render() {
@@ -17,7 +26,7 @@ const SearchForm = React.createClass({
             <form method="POST" action="javascript:void(0)">
                 <input type="text"
                     name="product_search"
-                    onKeyUp={this.props.onSearch}
+                    onKeyUp={this.onSearch}
                     placeholder="Search Product"
                     style={inputStyle} />
             </form>
@@ -25,4 +34,10 @@ const SearchForm = React.createClass({
     }
 });
 
-export default SearchForm;
+const mapper = (state, props) => {
+    return { store: props.store };
+};
+
+const ConnectedSearchForm = connect(mapper)(SearchForm);
+
+export default ConnectedSearchForm;

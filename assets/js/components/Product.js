@@ -2,7 +2,6 @@ import React from 'react'
 
 const ProductComponent = React.createClass({
     propTypes: {
-        id: React.PropTypes.any.isRequred,
         title: React.PropTypes.string.isRequired,
         img: React.PropTypes.string.isRequired,
         description: React.PropTypes.string.isRequired,

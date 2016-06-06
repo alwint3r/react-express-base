@@ -1,9 +1,12 @@
-import React from 'react';
-import Product from './Product';
+import React from 'react'
+import { connect } from 'react-redux'
+
+import Product from './Product'
+import Action from '../actions/ProductAction'
 
 const ProductList = React.createClass({
-    propTypes: {
-        data: React.PropTypes.array.isRequired,
+    componentDidMount() {
+        this.props.dispatch(Action.getProducts());
     },
 
     render() {
@@ -13,7 +16,7 @@ const ProductList = React.createClass({
             clear: 'both',
         };
 
-        const products = this.props.data.products.map(prod => {
+        const products = this.props.products.map(prod => {
             return (<Product key={prod.id}
                 title={prod.title}
                 img={prod.img}
@@ -24,4 +27,12 @@ const ProductList = React.createClass({
     }
 });
 
-export default ProductList;
+const mapper = (state, props) => {
+    return {
+        products: state ? state.products : [],
+    };
+};
+
+const ConnectedProductList = connect(mapper)(ProductList);
+
+export default ConnectedProductList;
